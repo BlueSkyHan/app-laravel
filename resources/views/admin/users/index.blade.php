@@ -5,6 +5,7 @@
     <table style="width:100%">
         <tr>
             <th>Id</th>
+            <th>Photo</th>
             <th>Name</th>
             <th>Email</th>
             <th>Role</th>
@@ -15,7 +16,8 @@
         @if($users)
             @foreach($users as $user)
                 <tr>
-                    <td>{{$user->id}}</td>
+                    <td><a href="{{route('admin.users.edit', $user->id)}}">{{$user->id}}</a></td>
+                    <td><img height="100" width="100" src="{{$user->photo ? $user->photo->name : 'http://placehold.it/100x100'}}" alt="" class="img-rounded"></td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->role->name}}</td>
