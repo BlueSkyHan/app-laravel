@@ -2,6 +2,9 @@
 
 @section('content')
     <h1>Users</h1>
+    @if(Session::has('deleted_user'))
+        <h3 class="bg-danger">{{session('deleted_user')}}</h3>
+    @endif
     <table style="width:100%">
         <tr>
             <th>Id</th>

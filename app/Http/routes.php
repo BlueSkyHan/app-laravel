@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['middlewareGroups' => ['web']], function () {
+Route::group(array('middlewareGroups' => ['web']), function () {
     Route::get('/', function () {
         return view('welcome');
     });
@@ -20,9 +20,13 @@ Route::group(['middlewareGroups' => ['web']], function () {
 
     Route::get('/home', 'HomeController@index');
 
-    Route::resource('/admin/users', 'AdminUsersController');
+    Route::group(array('middleware' => 'admin'), function(){
+        Route::get('/admin', function(){
+            return view('admin.index');
+        });
 
-    Route::get('/admin', function(){
-        return view('admin.index');
+        Route::resource('/admin/users', 'AdminUsersController');
+
+        Route::resource('/admin/posts', 'AdminPostsController');
     });
 });

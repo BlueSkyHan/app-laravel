@@ -36,6 +36,12 @@
                 {!! Form::submit('Edit', ['class'=>'btn btn-primary form-control']) !!}
             </div>
             {!! Form::close() !!}
+
+            {!! Form::open(['action'=>['AdminUsersController@destroy', $user->id], 'method'=>'DELETE']) !!}
+            <div class="form-group">
+                {!! Form::submit('Delete', ['class'=>'btn btn-danger form-control']) !!}
+            </div>
+            {!! Form::close() !!}
         </div>
     </div>
     <div class="row">
